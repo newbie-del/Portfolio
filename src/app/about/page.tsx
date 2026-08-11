@@ -22,6 +22,11 @@ import { DUR, EASE, inView, separate, stagger } from "@/lib/motion";
 
 const PortraitCanvas = dynamic(() => import("@/components/three/PortraitCanvas"), {
   ssr: false,
+  loading: () => (
+    <div aria-hidden className="absolute inset-0 grid place-items-center bg-void">
+      <span className="text-[9px] tracking-[0.2em] text-ghost">SAMPLING PORTRAIT...</span>
+    </div>
+  ),
 });
 
 const TONE_TEXT = {
