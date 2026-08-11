@@ -10,8 +10,16 @@ import { CountUp, Typewriter } from "@/components/ui/primitives";
 import { Led } from "@/components/ui/Panel";
 import { DUR, EASE, inView, stagger, wordIn } from "@/lib/motion";
 
-// 3D is loaded only in the browser, after the shell paints.
-const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
+// 3D is loaded only in the browser, after the shell paints. The placeholder holds
+// the same dark ground the scene resolves to, so the handover is a fade, not a flash.
+const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
+  ssr: false,
+  loading: () => (
+    <div aria-hidden className="absolute inset-0 grid place-items-center bg-void">
+      <span className="text-[9px] tracking-[0.2em] text-ghost">INITIALISING WORKSPACE...</span>
+    </div>
+  ),
+});
 
 const PATH_ICONS = {
   code: Code2,

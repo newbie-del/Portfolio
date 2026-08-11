@@ -24,6 +24,11 @@ import { DUR, EASE, inView, stagger } from "@/lib/motion";
 
 const DoorwayScene = dynamic(() => import("@/components/contact/DoorwayScene"), {
   ssr: false,
+  loading: () => (
+    <div aria-hidden className="absolute inset-0 grid place-items-center bg-void">
+      <span className="text-[9px] tracking-[0.2em] text-ghost">OPENING DOORWAY...</span>
+    </div>
+  ),
 });
 
 const rise = {
