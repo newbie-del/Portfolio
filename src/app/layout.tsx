@@ -8,7 +8,7 @@ import {
   TransitionCurtain,
   CursorGlow,
 } from "@/components/layout/Shell";
-import { SITE } from "@/data/site";
+import { SITE, SITE_URL } from "@/data/site";
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description:
     "Full-Stack Developer, AI Enthusiast and Problem Solver. I build digital systems that create impact.",
-  metadataBase: new URL("https://newbie-del.dev"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: `${SITE.name} — ${SITE.role}`,
     description: "I build digital systems that create impact.",
