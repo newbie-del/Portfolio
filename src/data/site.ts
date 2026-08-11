@@ -28,6 +28,13 @@ export const SITE = {
   resume: "/ABHISHEK-GHATEKAR-RESUME.pdf",
 } as const;
 
+/**
+ * Deploy origin — the one place the production domain is written.
+ * `metadataBase`, the sitemap and robots.txt all read it, so a domain change is
+ * a one-line edit. Verify this matches the real deployment before launch.
+ */
+export const SITE_URL = "https://newbie-del.dev";
+
 export interface NavItem {
   index: string;
   label: string;
