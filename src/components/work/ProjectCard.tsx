@@ -103,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <div className="mb-3 flex items-center gap-2 text-[8.5px] tracking-[0.2em] text-faint">
               <span className="text-violet">{project.category}</span>
               <span className="text-ghost">/</span>
-              <span>{project.year}</span>
+              <span>{project.date}</span>
             </div>
 
             <h3 className="font-display text-[clamp(1.05rem,2.4vw,1.5rem)] font-bold leading-tight tracking-[0.04em] text-bright transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5">

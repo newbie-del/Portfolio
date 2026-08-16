@@ -67,7 +67,7 @@ export function ProjectDetail({
               <span className="border border-hairline-lit px-2 py-1 text-violet">
                 {project.category}
               </span>
-              <span className="border border-hairline-lit px-2 py-1">{project.year}</span>
+              <span className="border border-hairline-lit px-2 py-1">{project.date}</span>
               {project.live ? (
                 <span className="flex items-center gap-1.5 border border-lime/30 px-2 py-1 text-lime">
                   <Led tone="lime" />
