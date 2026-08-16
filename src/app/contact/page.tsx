@@ -192,7 +192,7 @@ export default function ContactPage() {
                       <span className="hidden text-[9px] tracking-[0.14em] text-faint sm:inline">
                         {row.category}
                       </span>
-                      <span className="text-[9px] tabular-nums text-ghost">{row.year}</span>
+                      <span className="text-[9px] tabular-nums text-ghost">{row.date}</span>
                       <span
                         className={`inline-flex items-center gap-1.5 border px-2 py-0.5 text-[8.5px] tracking-[0.18em] ${
                           shipped

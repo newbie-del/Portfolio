@@ -4,7 +4,9 @@
  * Every field traces back to a file the user supplied:
  *   - descriptions + GitHub URLs -> DASH-THUMBNAIL/project-description.txt
  *   - thumbnails                 -> DASH-THUMBNAIL/*.png (used as-is)
- *   - dates + metrics            -> DASH-THUMBNAIL/ABHISHEK-UPDATED1.pdf (resume)
+ *   - metrics                    -> DASH-THUMBNAIL/ABHISHEK-UPDATED1.pdf (resume)
+ *   - dates                      -> the resume for Connex AI, FlowForge and
+ *     Blinkit; supplied directly by the owner for the other four.
  *
  * Per spec: DO NOT invent project information. DO NOT remove projects.
  * DO NOT replace the thumbnails. There are 7 projects, not 3.
@@ -31,7 +33,8 @@ export interface Project {
   name: string;
   tagline: string;
   category: Category;
-  year: string;
+  /** Month + year the project was built, supplied by the owner. */
+  date: string;
   /** Verbatim from project-description.txt. */
   description: string;
   problem: string;
@@ -54,7 +57,7 @@ export const PROJECTS: Project[] = [
     name: "CONNEX AI",
     tagline: "AI-Powered Video Communication Platform",
     category: "AI",
-    year: "2025",
+    date: "AUG 2025",
     description:
       "Connex AI is a SaaS AI meeting and video calling platform that enables users to have real-time voice and video conversations with custom AI agents. It combines LiveKit Agents and Gemini Live to provide low-latency AI voice interactions with real-time participant management and speaker-attributed transcripts, while an event-driven workflow powered by Inngest automatically processes transcripts, identifies speakers, generates AI summaries, and creates post-meeting artifacts. The platform also provides secure meeting recordings, transcriptions, summaries, and an AI chat section where users can ask questions and discuss topics related to their meetings. Built with Better Auth and Polar, it includes OAuth authentication, subscription billing, usage limits, and premium access, combining real-time communication, AI agents, and automated meeting intelligence into a single platform.",
     problem:
@@ -142,7 +145,7 @@ export const PROJECTS: Project[] = [
     name: "FLOWFORGE AI",
     tagline: "Workflow Automation Platform",
     category: "AI",
-    year: "2026",
+    date: "APR 2026",
     description:
       "FlowForge AI is a SaaS AI workflow automation platform that enables users to visually build, connect, and execute multi-step workflows through a drag-and-drop canvas. The platform supports webhook triggers, Google Forms integrations, and event-driven workflow execution, allowing users to automate repetitive processes and connect different services. It integrates AI models including OpenAI, Claude, and Gemini to power intelligent workflow steps such as content generation, data processing, decision-making, and task automation. The system is built with secure authentication, workflow persistence, database management, monitoring, and usage controls, combining visual workflow automation with AI capabilities to make complex business processes easier to design, manage, and execute.",
     problem:
@@ -229,7 +232,7 @@ export const PROJECTS: Project[] = [
     name: "CLICKFLOW AI",
     tagline: "AI Browser Automation Platform",
     category: "AI",
-    year: "2026",
+    date: "DEC 2026",
     description:
       "ClickFlow AI is an AI-powered browser automation and workflow platform built using Next.js, React, TypeScript, Tailwind CSS, React Flow, Playwright, Drizzle ORM, PostgreSQL/Neon, and AI models including OpenAI, Claude, and Gemini. The platform allows users to describe tasks in natural language and enables autonomous AI agents to plan and execute actions directly on real websites, while also providing a visual workflow builder for creating reusable automations. It supports features such as real-time workflow execution, browser session recording and replay, collaboration, authentication, organizations, billing, and human approval for sensitive actions, combining AI-driven browser automation with visual workflows to automate repetitive tasks such as research, form filling, price comparison, and other web-based processes.",
     problem:
@@ -317,7 +320,7 @@ export const PROJECTS: Project[] = [
     name: "CLARITYLEDGER",
     tagline: "Agentic Financial Intelligence",
     category: "AI",
-    year: "2026",
+    date: "JUL 2026",
     description:
       "ClarityLedger is an agentic financial-intelligence platform that answers plain-English questions about public companies by retrieving evidence from real SEC EDGAR filings and responding with citations, flagging where management's words disagree with the reported numbers. It ingests any US company's filings with polite rate-limiting and on-disk caching, and offers three retrieval strategies behind one interface — BM25 keyword, local semantic vector search, and hybrid reciprocal-rank fusion — with swappable LLM providers (Claude, OpenAI, Ollama) powering grounded, cited answers. A LangGraph agent layer decomposes compound questions across specialist nodes and runs a reconciliation step that performs a \"says-vs-numbers\" contradiction check, backed by an evaluation harness (Hit@k/MRR). The system is built with a FastAPI backend featuring bcrypt-hashed SQLite auth and stateless JWTs, plus a Next.js web UI with signup, company picker, and cited source cards — combining retrieval-augmented generation, hybrid search, and multi-agent orchestration into a verifiable analyst that runs fully locally and free, making evidence-backed financial analysis easy to get and trust.",
     problem:
@@ -407,7 +410,7 @@ export const PROJECTS: Project[] = [
     name: "SAVE & GROW",
     tagline: "Finance Intelligence & Expense Tracker",
     category: "FULL-STACK",
-    year: "2025",
+    date: "NOV 2024",
     description:
       "Save & Grow is a personal finance and investment tracking platform built using Next.js, React, Tailwind CSS, Drizzle ORM, and Neon PostgreSQL to help users manage income, expenses, and budgets in one place. The application provides an interactive dashboard for tracking financial activity, analyzing spending patterns, and getting AI-powered financial insights and investment suggestions based on user data, making money management simpler, more organized, and more actionable.",
     problem:
@@ -479,7 +482,7 @@ export const PROJECTS: Project[] = [
     name: "BLINKIT DASHBOARD",
     tagline: "Sales Analytics & Business Intelligence",
     category: "DATA",
-    year: "2026",
+    date: "JUL 2026",
     description:
       "Blinkit Sales Dashboard is a data analytics and business intelligence project built using Power BI, Microsoft Excel, Power Query, and DAX to analyze and visualize Blinkit's sales performance. The dashboard provides interactive KPI cards, charts, and business insights to track total sales, average sales, outlet performance, item distribution, outlet size, location-based performance, and sales trends, enabling users to quickly identify patterns and make data-driven decisions.",
     problem:
@@ -555,7 +558,7 @@ export const PROJECTS: Project[] = [
     name: "HR ANALYTICS",
     tagline: "Workforce Intelligence Dashboard",
     category: "DATA",
-    year: "2026",
+    date: "AUG 2026",
     description:
       "HR Analytics Dashboard is a business intelligence project built using Python, SQL, and Excel to analyze workforce data and visualize key HR metrics in a clean executive dashboard format. It helps track total employees, attrition rate, average salary, average age, tenure, satisfaction, department-wise trends, job roles, gender split, salary bands, education levels, and promotion status, making it easier to understand employee patterns and support data-driven HR decisions.",
     problem:
