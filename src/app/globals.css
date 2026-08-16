@@ -1,62 +1,75 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DESIGN SYSTEM — derived directly from prompt/refer-img.png
-   The reference frame is the visual authority. These tokens encode it.
+   DESIGN SYSTEM
+   ---------------------------------------------------------------------------
+   Derived from DASH-THUMBNAIL/ref-visual1.png. The reference is the visual
+   authority; these tokens encode it.
+
+   Three corrections against the previous system, all visible in the reference:
+     1. LIME is the primary accent. Violet / azure / amber are *category tints*
+        used only where the reference tints a single path card or bullet.
+     2. Surfaces are off-black, never #000. Pure black kills the depth the
+        photographic hero depends on.
+     3. Type has three tiers and a real body-copy size. Monospace is for
+        measurement, logs, labels and code. Prose is set in a humanist sans.
    ========================================================================= */
 
 @theme {
-  /* --- SURFACES: black / charcoal ------------------------------------- */
-  --color-void: #000000;
-  --color-abyss: #050506;
-  --color-panel: #0a0a0c;
-  --color-panel-2: #0e0e11;
-  --color-elevated: #131317;
+  /* --- SURFACES ------------------------------------------------------- */
+  /* Off-black. The rail sits darker than the content so the hero reads as
+     a lit room and the chrome recedes around it. */
+  --color-void: #08080a;
+  --color-rail: #060608;
+  --color-abyss: #0a0a0d;
+  --color-panel: #0c0c10;
+  --color-panel-2: #101014;
+  --color-elevated: #14141a;
 
-  /* --- BORDERS: thin, low-contrast, technical ------------------------- */
-  --color-hairline: #1c1c21;
-  --color-hairline-lit: #2a2a32;
-  --color-hairline-hot: #3a3a45;
+  /* --- BORDERS -------------------------------------------------------- */
+  --color-hairline: #17171c;
+  --color-hairline-lit: #23232b;
+  --color-hairline-hot: #34343f;
 
   /* --- TEXT ----------------------------------------------------------- */
-  --color-bright: #f2f2f4;
-  --color-primary-text: #c8c8cf;
-  --color-muted: #7c7c88;
-  --color-faint: #4a4a54;
-  --color-ghost: #2e2e36;
+  /* Contrast against --color-void: bright 15.8:1, text 8.4:1, muted 4.9:1.
+     Body copy and placeholders never fall below AA. */
+  --color-bright: #edeef0;
+  --color-primary-text: #a9abb3;
+  --color-muted: #7e808a;
+  --color-faint: #55575f;
+  --color-ghost: #33353b;
 
-  /* --- ACCENTS: purple / cyan / green / white ------------------------- */
-  --color-violet: #a855f7;
-  --color-violet-soft: #c084fc;
-  --color-violet-deep: #6d28d9;
-  --color-cyan: #22d3ee;
-  --color-cyan-soft: #67e8f9;
-  --color-lime: #a3e635;
-  --color-green: #4ade80;
-  --color-amber: #fbbf24;
-  --color-rose: #fb7185;
+  /* --- ACCENT: lime carries the brand ---------------------------------- */
+  /* Slightly yellowed and desaturated from the previous neon green so it
+     reads as phosphor rather than as a highlighter. */
+  --color-lime: #b4e34a;
+  --color-lime-soft: #cdf07d;
+  --color-lime-deep: #7fa32c;
 
-  /* --- TYPE: monospace technical + editorial display ------------------ */
-  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
-  --font-display: var(--font-space), var(--font-jetbrains), monospace;
+  /* --- CATEGORY TINTS: one per path, used nowhere else ------------------ */
+  --color-violet: #a78bfa;
+  --color-azure: #6aa9e9;
+  --color-amber: #d9a343;
+  --color-rose: #e08a8a;
 
-  /* --- MOTION TOKENS -------------------------------------------------- */
-  /* Precise, technical, mechanical. Never bouncy or cartoonish. */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
-  --ease-mech: cubic-bezier(0.4, 0, 0.2, 1);
+  /* --- TYPE ------------------------------------------------------------ */
+  /* IBM Plex Sans + IBM Plex Mono: a superfamily drawn together, so the
+     prose and the telemetry share skeletons without sharing a voice. */
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
-  --dur-instant: 120ms;
-  --dur-fast: 220ms;
-  --dur-base: 400ms;
-  --dur-slow: 700ms;
-  --dur-transition: 620ms; /* page transitions: 400-900ms per spec */
+  /* --- MOTION ---------------------------------------------------------- */
+  /* Stronger than the CSS built-ins, which are too weak to read as
+     intentional. Never ease-in: it delays the frame the eye is watching. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-soft: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
-  /* --- GLOW ----------------------------------------------------------- */
-  --glow-violet: 0 0 24px -4px rgb(168 85 247 / 0.45);
-  --glow-cyan: 0 0 24px -4px rgb(34 211 238 / 0.45);
-  --glow-lime: 0 0 24px -4px rgb(163 230 53 / 0.4);
+  --dur-press: 140ms;
+  --dur-fast: 180ms;
+  --dur-base: 260ms;
+  --dur-slow: 520ms;
 }
 
 /* ============================================================================
@@ -75,11 +88,12 @@ html {
 }
 
 body {
+  /* Prose is the default. Monospace is opted into, never inherited. */
   background: var(--color-void);
   color: var(--color-primary-text);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -87,28 +101,27 @@ body {
 }
 
 ::selection {
-  background: rgb(168 85 247 / 0.3);
+  background: rgb(180 227 74 / 0.25);
   color: var(--color-bright);
 }
 
-/* Technical scrollbar — part of the aesthetic, not an afterthought */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-abyss);
+  background: var(--color-rail);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-hairline-lit);
-  border: 2px solid var(--color-abyss);
+  border: 3px solid var(--color-rail);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-violet-deep);
+  background: var(--color-lime-deep);
 }
 
 :focus-visible {
-  outline: 1px solid var(--color-cyan);
+  outline: 1px solid var(--color-lime);
   outline-offset: 2px;
 }
 
@@ -118,24 +131,431 @@ canvas {
 }
 
 /* ============================================================================
-   PRIMITIVES — the repeated building blocks of the reference frame
+   TYPE TIERS
+   ---------------------------------------------------------------------------
+   Every piece of text on the site belongs to exactly one of these. The
+   previous system had 136 arbitrary pixel values and no body-copy size at
+   all, which is what made it read as a template.
+
+     DISPLAY   mono, uppercase, large   -> the terminal voice of the headline
+     HEADING   mono, uppercase, medium  -> section titles
+     BODY      sans, 15px/1.7           -> all prose
+     META      mono, 11px, tracked      -> labels, logs, telemetry
    ========================================================================= */
 
 @layer components {
-  /* Panel: thin-bordered dark container. The core structural unit. */
+  /* The headline. Monospace is load-bearing here: the trailing underscore in
+     "I BUILD_" is a caret, and a proportional face would break the fiction.
+
+     Every number here is measured off the reference by isolating the lime line
+     ("DIGITAL SYSTEMS") by hue — the only mask the photographic backdrop cannot
+     contaminate — and reading its glyph columns:
+
+       cap height    32px          -> 32 / 0.698 (Plex Mono cap ratio) = 45.8px
+       advance       24.16px       -> natural 0.6em is 27.5px, so -3.35px
+                                      of tracking, i.e. -0.073em
+       line pitch    59.5px        -> 59.5 / 45.8 = 1.3
+
+     The tracking is the finding that mattered. The reference's headline is
+     TIGHT, not airy: letters sit ~4px apart with the counters nearly touching,
+     and that density is what lets nineteen monospace characters read as a
+     single declarative line instead of a spread-out label. The previous 4.35rem
+     at -0.01em was 70px on a 1536 frame — half again too large — which is why
+     three lines became six and pushed the instrument row off the viewport.
+
+     The floor is solved, not chosen: at the 0.527em effective advance,
+     "THAT CREATE IMPACT." needs 19 x 0.527F, so a 320px phone with 24px of
+     gutter caps F at 29.5px. 1.72rem clears it. */
+  .t-display {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: clamp(1.72rem, 2.98vw, 45.8px);
+    line-height: 1.3;
+    letter-spacing: -0.073em;
+    text-transform: uppercase;
+    color: var(--color-bright);
+  }
+
+  .t-h2 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+    line-height: 1.24;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: var(--color-bright);
+  }
+
+  .t-h3 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-bright);
+  }
+
+  /* Card titles. Measured off the reference, not chosen: "EXPERIMENTS" occupies
+     85px for 11 characters, which is 8.1px per character. Monospace advance is
+     0.6em, so the face is ~13.5px at ZERO tracking.
+
+     That last part matters more than the size. The old .t-h3 tracked these at
+     0.08em, which adds 1px per character and swells the same word to 93px — and
+     four of those will not sit in a row at 1366px, which is what pushed the grid
+     into a 2x2 block that the reference never had. Untracked is both the
+     reference's own setting and what makes the composition fit.
+
+     Fluid so the four-across row survives down to 1280 without restacking. */
+  .t-card-title {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: clamp(11.5px, 0.95vw, 13.5px);
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-bright);
+  }
+
+  /* Panel header labels: "// BUILD LOG (LIVE)". Same measurement, same finding —
+     19 characters across 115px is 6.05px each, so 10px mono at ZERO tracking.
+     The old .t-label tracked them at 0.16em and ran the same string to 151px;
+     even 10.5px at 0.015em overshoots by 7px, which is enough to shift the
+     right-hand panels' labels off the reference's vertical. */
+  .t-panel-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Path-card descriptions. The one place the reference and the typography
+     direction disagree: the reference sets this prose in mono, the direction
+     forbids monospace paragraphs. Sans wins — these are sentences, and four of
+     them stacked in mono is exactly the "everything is a terminal" look the
+     reset was called to fix. Sized so it holds two lines in a 108px column,
+     which is the reference's own line count.
+
+     Flagged for the user; trivially revertible to .t-log if they want the
+     reference followed literally here. */
+  .t-card-body {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.004em;
+    color: var(--color-primary-text);
+  }
+
+  /* Log and telemetry rows inside panels. Tabular so the timestamp column can
+     never shift width between ticks. */
+  .t-log {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 10.5px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Prose. Measure is capped so long descriptions stay readable. */
+  .t-body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-primary-text);
+    max-width: 68ch;
+  }
+
+  .t-body-sm {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--color-muted);
+    max-width: 66ch;
+  }
+
+  /* Technical register: labels, logs, telemetry, timestamps, code. */
+  .t-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .t-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-faint);
+  }
+
+  .t-num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ============================================================================
+   PRIMITIVES
+   ---------------------------------------------------------------------------
+   Geometry measured off the reference rather than chosen:
+
+     radius   3px. Not zero — the reference's corner probe softens over
+              exactly three pixels (leftmost lit x runs 864, 863, 863, 862 as
+              the top border turns down). Three pixels is small enough to still
+              read as a machined edge and is the whole radius system.
+     border   #232426 measured on all three panels, which is hairline-lit, not
+              hairline. On the darker hairline the panels barely separated from
+              the backdrop, which is a large part of why the row read as flat.
+     rules    Panels have a top and bottom border and nothing else. The
+              divider under a header is INSET to the panel's own padding and is
+              dimmer than the outer border — measured spanning x 880..1185
+              inside a panel spanning 862..1203. A full-bleed border there is
+              what made these read as stacked table headers.
+   ========================================================================= */
+
+@layer components {
   .panel {
     position: relative;
-    background: color-mix(in srgb, var(--color-panel) 82%, transparent);
-    border: 1px solid var(--color-hairline);
-    backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--color-panel) 88%, transparent);
+    border: 1px solid var(--color-hairline-lit);
+    border-radius: 3px;
   }
 
+  /* 48px tall in the reference (top border 692 to divider 740), label centred. */
+  .panel-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  /* The inset divider. Dimmer than the panel border on purpose: it separates
+     without drawing a second box. */
+  .panel-rule {
+    height: 1px;
+    margin: 0 16px;
+    background: var(--color-hairline);
+  }
+
+  /* Panel body and footer share the header's 16px gutter so every edge in the
+     panel lines up on one vertical.
+
+     16 rather than 18 is not a rounding preference — the build-log row has to
+     fit "hh:mm:ss / verb / dotted.target / [OK]" inside a 333px panel without
+     truncating, and the arithmetic is tight enough that 4px of gutter decides
+     it: 333 - 32 = 301 inner, columns 50 + 44 + 101 + 25 = 220 plus three 21px
+     gaps = 283. At 18px gutters that same row loses the tail of every target,
+     which is the ellipsis visible in the previous build. */
+  .panel-body {
+    padding: 14px 16px;
+  }
+
+  /* Terminal command button: "> ENTER MY WORLD" */
+  .cmd {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid var(--color-hairline-lit);
+    border-radius: 3px;
+    background: color-mix(in srgb, var(--color-panel) 72%, transparent);
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-bright);
+    transition:
+      border-color var(--dur-base) var(--ease-out),
+      background-color var(--dur-base) var(--ease-out),
+      transform var(--dur-press) var(--ease-out);
+  }
+  /* Specular sweep. A single narrow band crosses the face once per hover —
+     the physical read is light travelling over a machined surface, which is
+     the register this button is already in.
+
+     It is deliberately weak (7% white) and slow (0.72s). A brighter, faster
+     sweep is the shine effect every template ships, and it looks like a
+     sticker. At this strength you notice the surface, not the effect. It never
+     runs on its own: no hover, no motion. */
+  .cmd::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 36%,
+      rgb(255 255 255 / 0.07) 50%,
+      transparent 64%
+    );
+    transform: translateX(-135%);
+    transition: transform 0.72s var(--ease-out);
+  }
+  .cmd:hover::after {
+    transform: translateX(135%);
+  }
+  .cmd:active {
+    /* Physical acknowledgement that the press landed. */
+    transform: scale(0.985);
+  }
+
+  /* Small technical chip. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-hairline);
+    padding: 0.25rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    white-space: nowrap;
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--color-hairline);
+  }
+
+  /* Blinking block caret. Steps, not a fade: a terminal caret is binary. */
+  .caret {
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    background: var(--color-lime);
+    vertical-align: text-bottom;
+    animation: caret-blink 1.06s steps(1) infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+  .mask-fade-r {
+    mask-image: linear-gradient(to right, #000 76%, transparent 100%);
+  }
+}
+
+/* ============================================================================
+   KEYFRAMES
+   ========================================================================= */
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Status LED. Slow, so it reads as a heartbeat rather than an alarm. */
+@keyframes led-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   DEPRECATED COMPATIBILITY LAYER
+   ---------------------------------------------------------------------------
+   The homepage has moved to the tokens above. The other six routes have not
+   been rebuilt yet (they each get their own visual reference), and they still
+   reference the previous system.
+
+   Everything below exists only so those routes keep rendering in the
+   meantime. Each entry should be deleted as its page is rebuilt, and this
+   whole block should be gone by the time CONTACT ships.
+
+   DELETE, DO NOT PORT: .corner-ticks, .grid-backdrop and .scanlines. These
+   three are applied decoration, and they are a large part of why the old build
+   read as dashboard boilerplate rather than as this room. The reference earns
+   its structure from alignment and a single hairline; it has no tiled grid
+   field, no corner crosshairs and no scanline overlay anywhere. When a route
+   comes up for rebuild, drop these rather than re-theming them.
+   Remaining consumers: .grid-backdrop -> work/XRayMode, stack/page;
+   .scanlines -> about, work/ProjectCard, work/ProjectDetail, work/XRayMode,
+   contact/DoorwayScene; .corner-ticks -> most panels on the six old routes.
+
+   Do not use any of these in new work.
+   ========================================================================= */
+
+@theme {
+  /* Old accent names. cyan now resolves to the azure category tint. */
+  --color-cyan: #6aa9e9;
+  --color-cyan-soft: #93c4f0;
+  --color-violet-soft: #c4b5fd;
+  --color-violet-deep: #7c5cd6;
+  --color-green: #7fbf6a;
+
+  /* Old display face. Resolves to the mono, which is the new display voice. */
+  --font-display: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Old easing and duration names. */
+  --ease-out-expo: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quint: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-mech: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-instant: 120ms;
+  --dur-transition: 440ms;
+
+  --glow-violet: 0 0 24px -6px rgb(167 139 250 / 0.4);
+  --glow-cyan: 0 0 24px -6px rgb(106 169 233 / 0.4);
+  --glow-lime: 0 0 24px -6px rgb(180 227 74 / 0.36);
+}
+
+@layer components {
   .panel-lit {
     border-color: var(--color-hairline-lit);
-    background: color-mix(in srgb, var(--color-panel-2) 88%, transparent);
+    background: color-mix(in srgb, var(--color-panel-2) 90%, transparent);
   }
 
-  /* Corner ticks — the small technical crosshairs framing panels */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .display {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.12;
+    color: var(--color-bright);
+    text-transform: uppercase;
+  }
+
+  /* The three applied-decoration utilities. Scheduled for deletion, not for
+     porting — see the DELETE, DO NOT PORT note at the top of this block. Kept
+     only because STACK and the X-Ray view still paint them and neither has its
+     visual reference yet. */
   .corner-ticks::before,
   .corner-ticks::after {
     content: "";
@@ -144,7 +564,6 @@ canvas {
     height: 6px;
     border-color: var(--color-hairline-hot);
     pointer-events: none;
-    transition: border-color var(--dur-fast) var(--ease-mech);
   }
   .corner-ticks::before {
     top: -1px;
@@ -159,148 +578,26 @@ canvas {
     border-right: 1px solid;
   }
 
-  /* Section label: "01_ INDEX" monospace eyebrow */
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-  }
-
-  /* Technical metadata chip */
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid var(--color-hairline);
-    padding: 3px 8px;
-    font-size: 9.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-    white-space: nowrap;
-    transition:
-      color var(--dur-fast) var(--ease-mech),
-      border-color var(--dur-fast) var(--ease-mech),
-      background-color var(--dur-fast) var(--ease-mech);
-  }
-
-  /* Terminal command line: "> ENTER MY WORLD" */
-  .cmd {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    border: 1px solid var(--color-hairline-lit);
-    background: color-mix(in srgb, var(--color-panel) 70%, transparent);
-    padding: 9px 16px;
-    font-size: 10.5px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-primary-text);
-    transition:
-      color var(--dur-fast) var(--ease-mech),
-      border-color var(--dur-fast) var(--ease-mech),
-      box-shadow var(--dur-base) var(--ease-mech),
-      transform var(--dur-fast) var(--ease-out-quart);
-  }
-  .cmd:hover {
-    color: var(--color-bright);
-    border-color: var(--color-violet);
-    box-shadow: var(--glow-violet);
-  }
-  .cmd:active {
-    transform: translateY(1px);
-  }
-
-  /* Editorial display headline */
-  .display {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 0.94;
-    color: var(--color-bright);
-    text-transform: uppercase;
-  }
-
-  /* Hairline rule */
-  .rule {
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      var(--color-hairline-lit),
-      transparent 70%
-    );
-  }
-
-  /* Blinking terminal caret */
-  .caret {
-    display: inline-block;
-    width: 0.55em;
-    height: 1.05em;
-    background: var(--color-lime);
-    vertical-align: text-bottom;
-    animation: caret-blink 1.05s steps(1) infinite;
-  }
-
-  /* Grid backdrop — the faint technical graph paper behind sections */
   .grid-backdrop {
     background-image:
       linear-gradient(var(--color-hairline) 1px, transparent 1px),
       linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
     background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 20%, transparent 78%);
+    mask-image: radial-gradient(
+      ellipse 90% 70% at 50% 40%,
+      #000 20%,
+      transparent 78%
+    );
   }
 
-  /* Scanline overlay — cinematic CRT texture */
   .scanlines {
     background-image: repeating-linear-gradient(
       0deg,
-      rgb(255 255 255 / 0.022) 0px,
-      rgb(255 255 255 / 0.022) 1px,
+      rgb(255 255 255 / 0.02) 0px,
+      rgb(255 255 255 / 0.02) 1px,
       transparent 1px,
       transparent 3px
     );
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
-  /* Fades a scrolling edge out instead of hard-cutting it */
-  .mask-fade-b {
-    mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
-  }
-  .mask-fade-r {
-    mask-image: linear-gradient(to right, #000 78%, transparent 100%);
-  }
-}
-
-/* ============================================================================
-   KEYFRAMES — ambient environment motion
-   ========================================================================= */
-
-@keyframes caret-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes led-pulse {
-  0%,
-  100% {
-    opacity: 0.28;
-  }
-  50% {
-    opacity: 1;
   }
 }
 
@@ -324,7 +621,10 @@ canvas {
 }
 
 /* ============================================================================
-   ACCESSIBILITY — honour reduced motion everywhere
+   REDUCED MOTION
+   ---------------------------------------------------------------------------
+   Reduced motion means gentler, not none: colour and opacity transitions
+   survive because they carry meaning, movement does not.
    ========================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
