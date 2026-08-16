@@ -1,13 +1,5 @@
 # Portfolio
 
-Personal portfolio for **Abhishek Ghatekar** — Full-Stack Developer, AI Enthusiast, Problem Solver.
-
-A seven-page site built as an instrument panel rather than a brochure: every project ships
-with a live **X-Ray teardown** that separates its architecture into layers you can inspect
-in 3D, and the playground runs six real-time simulations in the browser.
-
-**Live:** _not yet deployed_
-
 ---
 
 ## Stack
@@ -20,18 +12,7 @@ in 3D, and the playground runs six real-time simulations in the browser.
 | Motion | Framer Motion, GSAP |
 | Icons | lucide-react |
 
-## Routes
 
-| Route | What it is |
-|---|---|
-| `/` | Live 3D workspace hero |
-| `/about` | Portrait point-cloud, principles, education |
-| `/work` | Project archive — 7 projects |
-| `/work/[slug]` | Case study + X-Ray teardown |
-| `/stack` | Interactive ecosystem graph |
-| `/journey` | Scroll-driven timeline |
-| `/playground` | Six live canvas experiments |
-| `/contact` | Direct lines, build status, simulated build log |
 
 ## Architecture
 
@@ -68,8 +49,3 @@ npm run dev      # http://localhost:3000
 npm run build
 ```
 
-## Contact
-
-- **Email** — ghatekarabhishek0@gmail.com
-- **GitHub** — [github.com/newbie-del](https://github.com/newbie-del)
-- **X** — [x.com/AbhishekGhatekr](https://x.com/AbhishekGhatekr)
