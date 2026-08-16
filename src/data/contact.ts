@@ -106,7 +106,7 @@ export interface PipelineRow {
   index: string;
   name: string;
   category: string;
-  year: string;
+  date: string;
   state: BuildState;
   /** The evidence the state rests on, shown so the claim is checkable. */
   evidence: string;
@@ -118,7 +118,7 @@ export const PIPELINE: PipelineRow[] = PROJECTS.map((p) => ({
   index: p.index,
   name: p.name,
   category: p.category,
-  year: p.year,
+  date: p.date,
   state: p.live ? "SHIPPED" : "SOURCE PUBLISHED",
   evidence: p.live
     ? p.live.replace(/^https?:\/\//, "")
