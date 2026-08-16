@@ -99,7 +99,7 @@ export const EDUCATION: EducationEntry[] = [
     title: "BE, COMPUTER ENGINEERING",
     org: "Universal College of Engineering — Mumbai University",
     period: "AUG 2023 — PRESENT",
-    facts: ["CGPA 7.00 / 10.00"],
+    facts: ["CGPA 7.30 / 10.00"],
   },
   {
     title: "SECONDARY & HIGHER SECONDARY",
