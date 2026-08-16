@@ -1,15 +1,3 @@
-/**
- * JOURNEY TIMELINE
- * ---------------------------------------------------------------------------
- * Strictly derived from the resume (ABHISHEK-UPDATED1.pdf), per the user's
- * explicit choice: "Derive strictly from resume dates only."
- *
- * Nothing here is invented. The reference image's 2022-2026 labels are
- * dropped in favour of what is actually provable:
- *   2018-2023 schooling  ·  Aug 2023 BE start  ·  Aug 2025 Connex AI
- *   Apr 2026 FlowForge AI  ·  Jul 2026 Blinkit dashboard
- */
-
 export interface Milestone {
   year: string;
   title: string;
