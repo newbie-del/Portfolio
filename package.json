@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify:nav": "node scripts/verify-navigation.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
