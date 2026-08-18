@@ -8,8 +8,19 @@
  * Guards the bug fixed in components/layout/Shell.tsx, where a route could be
  * fully present in the DOM at opacity 0 until a manual reload.
  *
- *   npm run dev -- -p 3123      # in one terminal
- *   npm run verify:nav          # in another
+ * RUN IT AGAINST A PRODUCTION BUILD:
+ *
+ *   npm run build && npx next start -p 3123    # one terminal
+ *   npm run verify:nav                         # another
+ *
+ * `next dev` produces two false failures that look exactly like product bugs.
+ * A route's first-ever request is compiled on demand (/journey took 3.7s here
+ * against 33ms warm) and the App Router does not change the URL until the RSC
+ * payload lands, so a click can still be in flight when the probe samples. And
+ * a dev server left running while files change under it serves stale chunk
+ * URLs — `ChunkLoadError: Loading chunk app/contact/page failed` with a 404,
+ * which surfaces as the error boundary and reads as a broken page. Both are the
+ * dev server, not the site.
  *
  * Overridable: BASE (default http://localhost:3123), CHROME (path to Chrome).
  * Zero dependencies — drives real headless Chrome over the DevTools Protocol
