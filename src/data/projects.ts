@@ -551,10 +551,126 @@ export const PROJECTS: Project[] = [
     ],
   },
 
+
   /* ---------------------------------------------------------------- 07 --- */
+{
+  slug: "mortgage-credit-risk-analytics",
+  index: "07",
+  name: "MORTGAGE CREDIT RISK ANALYTICS",
+  tagline: "Mortgage Credit Risk & Portfolio Analytics",
+  category: "DATA",
+  date: "SEP 2026",
+  description:
+    "Mortgage Credit Risk Analytics is an end-to-end data analysis project built on 12.26 million 2024 HMDA mortgage application records. The project takes raw loan-level data through profiling, data-quality validation, Python-based processing, MySQL analysis, risk segmentation, and an interactive Power BI reporting layer. It examines mortgage application outcomes from a credit-risk and underwriting perspective, analyzing denial rates across loan purpose, debt-to-income ratio, loan-to-value, geography, demographics, loan type, occupancy, lien status, pricing, and denial reasons. The final dashboard turns large-scale loan data into interactive risk insights, allowing users to explore portfolio concentration, risk drivers, demographic differences, product-level patterns, and detailed loan-purpose segments.",
+  problem:
+    "Mortgage datasets contain millions of records and dozens of variables, making it difficult to identify meaningful credit-risk patterns, compare portfolio segments, and separate high-risk concentration from high-volume exposure.",
+  solution:
+    "A complete analytics pipeline that processes 12.26M HMDA applications through Python, MySQL and Power BI — combining data-quality validation, risk segmentation, SQL analysis, DAX-driven reporting and interactive drill-through views.",
+  features: [
+    "Analysis of 12.26M+ 2024 HMDA mortgage application records",
+    "Python-based profiling, transformation, chunked processing and validation",
+    "MySQL analysis covering DTI, LTV, loan purpose, denial reasons, geography and product risk",
+    "Seven-page Power BI dashboard with executive KPIs, risk drivers and portfolio concentration",
+    "Demographic and fair-lending descriptive analysis with standardized comparisons",
+    "Interactive loan-purpose drill-through with DTI, denial reasons, loan-type mix and KPIs",
+    "Data-quality reconciliation across Python, SQL and Power BI outputs",
+    "Excel-based data-quality logs and HMDA codebook documentation",
+  ],
+  stack: [
+    "Python",
+    "Pandas",
+    "MySQL 8.0",
+    "Power BI",
+    "DAX",
+    "Microsoft Excel",
+    "HMDA",
+    "SQL",
+  ],
+  chips: ["PYTHON", "MYSQL", "POWER BI", "HMDA"],
+  thumbnail: "/projects/mortgage-credit-risk-analytics.png",
+  github:
+    "https://github.com/newbie-del/mortgage-credit-risk-analytics",
+  live: null,
+  xray: [
+    {
+      id: "source",
+      label: "DATA SOURCE",
+      sublabel: "2024 HMDA / 12.26M Records",
+      tone: "violet",
+      nodes: [
+        "Loan Applications",
+        "Applicant Data",
+        "Property Data",
+        "Loan Attributes",
+      ],
+      detail:
+        "The project starts with the 2024 Dynamic National Loan-Level Dataset containing 12,260,627 mortgage application records and 99 columns from the official HMDA data source.",
+    },
+    {
+      id: "processing",
+      label: "PROCESSING",
+      sublabel: "Python / Pandas",
+      tone: "cyan",
+      nodes: [
+        "Profiling",
+        "Data Quality",
+        "Transformation",
+        "Chunk Processing",
+      ],
+      detail:
+        "Python is used to inspect the raw dataset, identify missing and extreme values, derive analytical fields, process the large file in 100,000-row chunks and validate the transformed output before database analysis.",
+    },
+    {
+      id: "database",
+      label: "ANALYTICS",
+      sublabel: "MySQL 8.0 / SQL",
+      tone: "lime",
+      nodes: [
+        "KPIs",
+        "DTI / LTV",
+        "Denial Analysis",
+        "Risk Segmentation",
+      ],
+      detail:
+        "MySQL stores the analytical dataset and powers queries for portfolio KPIs, denial rates, loan-purpose risk, DTI and LTV segmentation, geographic differences, product characteristics, pricing and risk-factor interactions.",
+    },
+    {
+      id: "dashboard",
+      label: "REPORTING",
+      sublabel: "Power BI / DAX",
+      tone: "amber",
+      nodes: [
+        "Executive Overview",
+        "Risk Drivers",
+        "Demographics",
+        "Product Risk",
+        "Deep Dive",
+      ],
+      detail:
+        "Power BI transforms the SQL analysis into a seven-page interactive report using DAX measures, slicers, segmentation, drill-through pages and executive-focused visual reporting.",
+    },
+    {
+      id: "validation",
+      label: "VALIDATION",
+      sublabel: "Python / SQL / Excel",
+      tone: "rose",
+      nodes: [
+        "Row Reconciliation",
+        "Missing Values",
+        "Category Checks",
+        "KPI Validation",
+      ],
+      detail:
+        "Results are cross-checked across Python, MySQL and Power BI using row-count reconciliation, denominator checks, category validation, LTV quality checks and KPI reconciliation, with Excel used for supporting data-quality and codebook documentation.",
+    },
+  ],
+},
+
+
+  /* ---------------------------------------------------------------- 08 --- */
   {
     slug: "hr-analytics-dashboard",
-    index: "07",
+    index: "08",
     name: "HR ANALYTICS",
     tagline: "Workforce Intelligence Dashboard",
     category: "DATA",
@@ -616,6 +732,122 @@ export const PROJECTS: Project[] = [
       },
     ],
   },
+
+
+  /* ---------------------------------------------------------------- 09 --- */
+{
+  slug: "ecommerce-data-analytics",
+  index: "09",
+  name: "E-COMMERCE DATA ANALYTICS",
+  tagline: "Retail Sales & Profitability Analytics",
+  category: "DATA",
+  date: "AUG 2026",
+  description:
+    "E-Commerce Data Analytics is an end-to-end retail analytics project built on the Global Superstore dataset, covering 51,290 order lines across 147 countries. The project takes raw transactional data through data-quality auditing, customer and order identity resolution, feature engineering, RFM segmentation, cohort analysis, SQL business analysis, and an interactive Power BI reporting layer. It focuses on understanding whether revenue growth is creating real business value by examining profitability, discounting, products, customers, returns, fulfilment, geography, and portfolio concentration. The final analytical system combines Python, SQL and Power BI to turn raw retail transactions into actionable insights around margin leakage, customer value, product performance and operational efficiency.",
+  problem:
+    "Strong revenue growth can hide margin leakage, unprofitable products, excessive discounting, customer concentration and operational issues. A retail business needs to understand where revenue creates profit and where volume is being purchased at the expense of margin.",
+  solution:
+    "A complete retail analytics pipeline that cleans and validates transactional data, engineers commercial metrics, segments customers with RFM and cohort analysis, answers business questions through SQL, and exposes the results through a four-page Power BI reporting model.",
+  features: [
+    "End-to-end analysis of 51,290 order lines across 147 countries",
+    "Python data-quality audit, customer identity resolution and feature engineering",
+    "SQL analysis for sales growth, profitability, products, customers and operations",
+    "RFM customer segmentation and cohort retention analysis",
+    "Discount-band and product-quadrant analysis to identify margin leakage",
+    "Four-page Power BI project with executive, product, customer and operations reporting",
+    "Returns analysis with market-coverage-aware calculations",
+    "Automated verification with 178 checks and zero reported failures",
+  ],
+  stack: [
+    "Python",
+    "Pandas",
+    "NumPy",
+    "SciPy",
+    "SQLite",
+    "ANSI SQL",
+    "Power BI",
+    "DAX",
+    "Jupyter",
+    "Excel",
+  ],
+  chips: ["PYTHON", "SQL", "POWER BI", "RFM"],
+  thumbnail: "/projects/ecommerce-data-analytics.png",
+  github:
+    "https://github.com/newbie-del/ecommerce-data-analytics",
+  live: null,
+  xray: [
+    {
+      id: "source",
+      label: "DATA SOURCE",
+      sublabel: "Global Superstore",
+      tone: "violet",
+      nodes: [
+        "Orders",
+        "Returns",
+        "People",
+        "51K+ Order Lines",
+      ],
+      detail:
+        "The project starts with the Global Superstore workbook containing 51,290 order lines, returns data and regional manager information covering 147 countries, 7 markets and 13 regions.",
+    },
+    {
+      id: "processing",
+      label: "PROCESSING",
+      sublabel: "Python / Pandas",
+      tone: "cyan",
+      nodes: [
+        "Data Audit",
+        "Identity Resolution",
+        "Feature Engineering",
+        "RFM / Cohorts",
+      ],
+      detail:
+        "Python profiles the raw workbook, validates keys and dates, resolves customer and order identities, engineers commercial and operational metrics, and builds RFM and cohort datasets without dropping transactional rows.",
+    },
+    {
+      id: "database",
+      label: "ANALYTICS",
+      sublabel: "ANSI SQL / SQLite",
+      tone: "lime",
+      nodes: [
+        "Sales KPIs",
+        "Product Analysis",
+        "Customer Analysis",
+        "Operations",
+      ],
+      detail:
+        "The SQL layer answers business questions around revenue growth, profit margins, discounting, product performance, customer value, returns, fulfilment and portfolio concentration using CTEs, aggregations and window functions.",
+    },
+    {
+      id: "dashboard",
+      label: "REPORTING",
+      sublabel: "Power BI / DAX",
+      tone: "amber",
+      nodes: [
+        "Executive Overview",
+        "Product Performance",
+        "Customer Insights",
+        "Operations",
+      ],
+      detail:
+        "The Power BI project uses a star-schema model and DAX measures to turn the analytical datasets into interactive reporting focused on executive KPIs, profitability, customers, products and operational performance.",
+    },
+    {
+      id: "validation",
+      label: "VALIDATION",
+      sublabel: "178 Checks / 0 Failures",
+      tone: "rose",
+      nodes: [
+        "Reconciliation",
+        "SQL Verification",
+        "KPI Checks",
+        "Data Quality",
+      ],
+      detail:
+        "Published metrics and analytical claims are independently verified through automated assertions, including Python-versus-SQL reconciliation, key checks, financial totals and Power BI model inputs before the results are published.",
+    },
+  ],
+},
 ];
 
 export const CATEGORIES = ["ALL", "AI", "FULL-STACK", "DATA"] as const;
@@ -634,3 +866,5 @@ export function getProjectNeighbours(slug: string) {
     next: i < PROJECTS.length - 1 ? PROJECTS[i + 1] : PROJECTS[0],
   };
 }
+
+
