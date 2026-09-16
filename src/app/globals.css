@@ -621,6 +621,55 @@ canvas {
 }
 
 /* ============================================================================
+   ROUTE TRANSITION
+   ---------------------------------------------------------------------------
+   The two pieces of motion that wrap every route. Both are CSS rather than
+   framer-motion for one reason: they are the only animations whose failure is
+   fatal. Everything else on a page can miss a frame and cost a fade; these two
+   own the visibility of the whole viewport.
+
+   Both are written so their RESTING state is "content visible". `.route-enter`
+   has no fill on the hidden end, and `.route-curtain` sits at scaleY(0) unless
+   the keyframes are actively raising it. An animation that never starts, is
+   interrupted, or is collapsed to 0.001ms by the reduced-motion block below
+   therefore leaves a readable page — never a blank one.
+
+   See the comments in components/layout/Shell.tsx for the App Router bug this
+   replaced.
+   ========================================================================= */
+
+@keyframes route-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.route-enter {
+  animation: route-enter var(--dur-transition) var(--ease-out) both;
+}
+
+@keyframes route-curtain {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+.route-curtain {
+  /* Base state, deliberately not a fill-mode: uncovered is the default. */
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: route-curtain var(--dur-transition) var(--ease-in-out);
+}
+
+/* ============================================================================
    REDUCED MOTION
    ---------------------------------------------------------------------------
    Reduced motion means gentler, not none: colour and opacity transitions
