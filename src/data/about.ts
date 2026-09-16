@@ -97,7 +97,7 @@ export interface EducationEntry {
 export const EDUCATION: EducationEntry[] = [
   {
     title: "BE, COMPUTER ENGINEERING",
-    org: "Universal College of Engineering — Mumbai University",
+    org: " Mumbai University",
     period: "AUG 2023 — PRESENT",
     facts: ["CGPA 7.30 / 10.00"],
   },
