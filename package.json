@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "verify:nav": "node scripts/verify-navigation.mjs"
+    "verify:nav": "node scripts/verify-navigation.mjs",
+    "probe:about": "node scripts/probe-about-stage.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.3.0",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lucide-react": "^0.544.0",

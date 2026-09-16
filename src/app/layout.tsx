@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
@@ -64,11 +65,15 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+
         <TransitionCurtain />
         <Rail />
+
         <PageShell>
           <div id="content">{children}</div>
         </PageShell>
+
+        <Analytics />
       </body>
     </html>
   );
